@@ -28,3 +28,13 @@ function oceanwp_child_enqueue_parent_style() {
 	
 }
 add_action( 'wp_enqueue_scripts', 'oceanwp_child_enqueue_parent_style' );
+
+function my_post_layout_class( $class ) {
+
+	if ( is_singular( 'advert' ) ) {
+		$class = 'full-width';
+	}
+	return $class;
+
+}
+add_filter( 'ocean_post_layout_class', 'my_post_layout_class', 20 );
